@@ -3,102 +3,133 @@
 <title>SHAAN</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<style>.bebas{font-family:'Bebas Neue'}body{font-family:'Inter'}html{scroll-behavior:smooth}
-#intro{position:fixed;inset:0;z-index:9999;background:#000;display:flex;align-items:center;justify-content:center;transition:transform 0.9s cubic-bezier(0.8,0,0.2,1)}
+<style>
+.bebas{font-family:'Bebas Neue'}body{font-family:'Inter';background:#F6F3EB}html{scroll-behavior:smooth}
+#intro{position:fixed;inset:0;z-index:9999;background:#050505;display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(0.8,0,0.2,1)}
 #intro.hide{transform:translateY(-100%)}
-.web{position:absolute;inset:0;opacity:0.12}
-#webTrigger{position:absolute;bottom:30px;left:30px;z-index:20;cursor:pointer;transition:all 0.6s}
-#webTrigger.animating{bottom:50%;left:50%;transform:translate(-50%,50%) scale(18);opacity:0.8}
+.web{position:absolute;inset:0}
+#webTrigger{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:20;cursor:pointer}
 .menu-open{transform:translateX(0)!important}
-.hero-3d{text-shadow: 0 1px 0 #ddd, 0 2px 0 #ccc, 0 10px 20px rgba(0,0,0,0.15); transform: perspective(800px) rotateX(5deg); }
-.float{animation:float 6s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 </style></head>
-<body class="bg-[#F6F3EB] text-black">
+<body class="text-black">
 
-<!-- INTRO CHEBKA -->
+<!-- INTRO - CHEBKA PRO 3D -->
 <div id="intro">
 <canvas id="webCanvas" class="web"></canvas>
-<div class="relative z-10 text-center pointer-events-none">
-<div class="text-[110px] float">🕷️</div>
-<h1 class="bebas text-[#F6F3EB] text-[72px] tracking-widest">SHAAN</h1>
-<p class="text-[#F6F3EB]/50 text-[11px] tracking-[0.4em] mt-2">FOR THE QUIET ONES</p>
+<div class="relative z-10 text-center">
+<div class="w-[120px] h-[120px] mx-auto relative">
+<div class="absolute inset-0 bg-white/10 rounded-full blur-2xl"></div>
+<div class="relative text-[80px]">🕷️</div>
 </div>
+<h1 class="bebas text-white text-[64px] tracking-[0.2em] mt-6">SHAAN</h1>
+<p class="text-white/40 text-[10px] tracking-[0.5em] mt-2">EST 2024 • MOROCCO</p>
+</div>
+<!-- CHEBKA BOHDA F LWAST LTA7T - PRO 3D -->
 <div id="webTrigger" onclick="enterSite()">
-<div class="w-[80px] h-[80px] bg-white/10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition"><span class="text-[38px]">🕸️</span></div>
-<p class="text-white/50 text-[8px] tracking-widest text-center mt-2">ENTER</p>
+<div class="group relative">
+<div class="absolute inset-0 bg-white blur-xl opacity-20 group-hover:opacity-40 transition"></div>
+<div class="relative w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-110 hover:shadow-[0_0_60px_rgba(255,255,255,0.5)] transition-all duration-500">
+<span class="text-[44px]">🕸️</span>
+</div>
+</div>
+<p class="text-white/60 text-[9px] tracking-[0.3em] text-center mt-4 font-bold">ENTER</p>
 </div>
 </div>
 
-<!-- NAVBAR - 3AMER B ACCUEIL SHOP CONTACT -->
-<nav class="fixed top-0 w-full z-50 bg-[#F6F3EB]/80 backdrop-blur-xl border-b border-black/5">
-<div class="max-w-7xl mx-auto px-6 h-[68px] flex justify-between items-center">
-<span class="bebas text-[22px] tracking-widest">SHAAN 🕷️</span>
-<div class="flex items-center gap-3">
-<!-- HNA 3MART LIK 3 CHRTAT B KTBA -->
-<div class="hidden md:flex items-center gap-2 bg-black rounded-full p-1.5">
-<a href="#accueil" class="px-5 py-2 bg-white text-black rounded-full text-[11px] font-bold tracking-widest">ACCUEIL</a>
-<a href="#shop" class="px-5 py-2 text-white/80 hover:text-white rounded-full text-[11px] font-bold tracking-widest">SHOP</a>
-<a href="#contact" class="px-5 py-2 text-white/80 hover:text-white rounded-full text-[11px] font-bold tracking-widest">CONTACT</a>
-</div>
-<button onclick="toggleMenu()" class="md:hidden w-10 h-10 bg-black rounded-full flex flex-col items-center justify-center gap-1.5">
-<span class="w-4 h-[2px] bg-white"></span><span class="w-4 h-[2px] bg-white"></span><span class="w-4 h-[2px] bg-white"></span>
+<!-- NAVBAR - GHA SHAAN + 3 CHRTAT BOHDOM -->
+<nav class="fixed top-0 w-full z-50 bg-[#F6F3EB] border-b border-black/5">
+<div class="max-w-7xl mx-auto px-6 h-[64px] flex justify-between items-center">
+<span class="bebas text-[20px] tracking-widest">SHAAN 🕷️</span>
+<button onclick="toggleMenu()" class="w-10 h-10 bg-black rounded-full flex flex-col items-center justify-center gap-[4px]">
+<span class="w-[14px] h-[1.5px] bg-white block"></span>
+<span class="w-[14px] h-[1.5px] bg-white block"></span>
+<span class="w-[14px] h-[1.5px] bg-white block"></span>
 </button>
-<button onclick="toggleMenu()" class="hidden md:flex w-10 h-10 bg-black rounded-full items-center justify-center text-white">☰</button>
-</div>
 </div>
 </nav>
 
-<div id="mobileMenu" class="fixed inset-0 z-[60] bg-black text-[#F6F3EB] translate-x-full transition-all duration-500 flex flex-col justify-center px-10">
-<button onclick="toggleMenu()" class="absolute top-6 right-6 w-10 h-10 border border-white/20 rounded-full">✕</button>
-<a onclick="toggleMenu()" href="#accueil" class="bebas text-[72px] leading-none hover:translate-x-3 transition">ACCUEIL</a>
-<a onclick="toggleMenu()" href="#shop" class="bebas text-[72px] leading-none hover:translate-x-3 transition">SHOP</a>
-<a onclick="toggleMenu()" href="#contact" class="bebas text-[72px] leading-none hover:translate-x-3 transition">CONTACT</a>
-<div class="mt-16 flex gap-3"><img src="photo1.jpg" class="w-[70px] h-[70px] rounded-xl object-cover"><img src="photo2.jpg" class="w-[70px] h-[70px] rounded-xl object-cover"><img src="photo3.jpg" class="w-[70px] h-[70px] rounded-xl object-cover"></div>
-<a href="https://wa.me/212684745688" class="mt-8 bg-[#F6F3EB] text-black px-8 py-4 rounded-full text-center font-bold text-[11px] tracking-widest">WHATSAPP 0684745688</a>
+<!-- MENU - FIH ACCUEIL SHOP CONTACT -->
+<div id="mobileMenu" class="fixed inset-0 z-[60] bg-black text-white translate-x-full transition-all duration-500 flex flex-col justify-center px-10">
+<button onclick="toggleMenu()" class="absolute top-6 right-6 w-10 h-10 border border-white/20 rounded-full flex items-center justify-center">✕</button>
+<a onclick="toggleMenu()" href="#accueil" class="bebas text-[72px] leading-none hover:opacity-50 transition">ACCUEIL</a>
+<a onclick="toggleMenu()" href="#shop" class="bebas text-[72px] leading-none hover:opacity-50 transition">SHOP</a>
+<a onclick="toggleMenu()" href="#contact" class="bebas text-[72px] leading-none hover:opacity-50 transition">CONTACT</a>
+<div class="mt-12 opacity-40 text-[11px] tracking-widest">SHAAN • FOR THE QUIET ONES • LIMITED</div>
+<a href="https://wa.me/212684745688" class="mt-6 bg-white text-black px-8 py-4 rounded-full text-center text-[11px] font-bold inline-block">WHATSAPP 0684745688</a>
 </div>
 
-<!-- HERO MINIMAL 3D - BLA DROP 01 LIVE -->
-<section id="accueil" class="pt-[68px] min-h-[88vh] flex items-center justify-center text-center px-6 relative overflow-hidden">
-<div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/[0.02]"></div>
-<div class="relative z-10 max-w-3xl">
-<!-- 7AYEDNA DROP 01 LIVE -->
-<h1 class="bebas text-[72px] md:text-[132px] leading-[0.82] hero-3d">FOR THE<br><span class="opacity-15">QUIET</span><br>ONES.</h1>
-<p class="mt-8 opacity-60 text-[13px] max-w-[320px] mx-auto leading-relaxed">SHAAN - machi brand dyal models, hna l'vrai famille. Born in streets.</p>
-<a href="#shop" class="mt-10 inline-flex items-center gap-3 bg-black text-white px-10 py-4 rounded-full text-[11px] font-bold tracking-[0.2em] hover:scale-105 transition">SHOP NOW <span>→</span></a>
-<div class="mt-16 flex justify-center gap-10 text-[10px] tracking-widest opacity-30"><span>EST 2024</span><span>•</span><span>LIMITED</span><span>•</span><span>NO RESTOCK</span></div>
-</div>
-</section>
-
-<div class="bg-black text-white py-3.5 text-center text-[10px] tracking-[0.4em] flex justify-center gap-8 overflow-hidden"><span>SHAAN</span><span>•</span><span>LIMITED DROP</span><span>•</span><span>MADE IN MOROCCO</span><span>•</span><span>SHAAN</span></div>
-
-<!-- SHOP 3D -->
-<section id="shop" class="max-w-7xl mx-auto px-6 py-24 bg-white">
-<div class="flex justify-between items-end mb-12"><h2 class="bebas text-[52px]">SHOP / DROP 01</h2><p class="text-[11px] opacity-40 tracking-widest hidden md:block">3D • HOVER • REAL FAM</p></div>
-<div class="grid md:grid-cols-3 gap-8">
-<div class="group bg-[#F6F3EB] rounded-[32px] p-5 hover:shadow-[0_30px_60px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-500"><div class="overflow-hidden rounded-[20px]"><img src="photo1.jpg" class="w-full h-[400px] object-cover group-hover:scale-110 transition duration-700"></div><div class="p-4"><div class="flex justify-between"><p class="font-bold">NIGHT SPIDER</p><p class="bebas text-[20px]">299 MAD</p></div><p class="text-[11px] opacity-50">Limited 30 pcs</p></div><a href="https://wa.me/212684745688?text=Bghit NIGHT SPIDER" class="block bg-black text-white text-center py-3.5 rounded-full text-[11px] font-bold tracking-widest">COMMANDER →</a></div>
-<div class="group bg-[#F6F3EB] rounded-[32px] p-5 hover:shadow-[0_30px_60px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-500"><div class="overflow-hidden rounded-[20px]"><img src="photo2.jpg" class="w-full h-[400px] object-cover group-hover:scale-110 transition duration-700"></div><div class="p-4"><div class="flex justify-between"><p class="font-bold">BEACH DAY</p><p class="bebas text-[20px]">249 MAD</p></div><p class="text-[11px] opacity-50">Summer drop</p></div><a href="https://wa.me/212684745688?text=Bghit BEACH DAY" class="block border border-black text-center py-3.5 rounded-full text-[11px] font-bold tracking-widest">COMMANDER →</a></div>
-<div class="group bg-[#F6F3EB] rounded-[32px] p-5 hover:shadow-[0_30px_60px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-500"><div class="overflow-hidden rounded-[20px]"><img src="photo3.jpg" class="w-full h-[400px] object-cover group-hover:scale-110 transition duration-700"></div><div class="p-4"><div class="flex justify-between"><p class="font-bold">STREET CREW</p><p class="bebas text-[20px]">499 MAD</p></div><p class="text-[11px] opacity-50">6 crew limited</p></div><a href="https://wa.me/212684745688?text=Bghit STREET CREW" class="block border border-black text-center py-3.5 rounded-full text-[11px] font-bold tracking-widest">COMMANDER →</a></div>
+<!-- HERO - BLA FOR THE QUIET ONES - STYLE SHAAN -->
+<section id="accueil" class="pt-[64px] min-h-[90vh] flex items-center justify-center text-center px-6 bg-[#F6F3EB]">
+<div class="max-w-4xl">
+<h1 class="bebas text-[88px] md:text-[180px] leading-[0.8] tracking-tight">
+SHAAN<br>
+<span class="text-transparent" style="-webkit-text-stroke:1.5px black;">SHAAN</span><br>
+SHAAN
+</h1>
+<p class="mt-8 text-[12px] tracking-[0.3em] opacity-40">FÈS • 2024 • DROP 01 • LIMITED 50 PCS</p>
+<a href="#shop" class="mt-10 inline-block bg-black text-white px-12 py-4 rounded-full text-[11px] font-bold tracking-widest hover:bg-black/80 transition">ENTER SHOP →</a>
 </div>
 </section>
 
-<!-- FOOTER 3D CREATIVE - MN 3ANDI -->
-<footer id="contact" class="bg-black text-[#F6F3EB] relative overflow-hidden">
-<div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(white 1px, transparent 1px); background-size: 24px 24px;"></div>
-<div class="relative max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-3 gap-12">
-<div><h2 class="bebas text-[64px] leading-[0.85]">JOIN<br>THE<br>FAMILY.</h2><p class="mt-4 opacity-50 text-[12px] max-w-[260px]">Pas de newsletter. Juste WhatsApp. Kan-sift lik drop 9bel kolchi.</p></div>
-<div class="space-y-4"><div class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur"><p class="text-[11px] tracking-widest opacity-50 mb-2">WHATSAPP DIRECT</p><a href="https://wa.me/212684745688" class="text-[18px] font-bold">0684745688</a><p class="text-[11px] opacity-40 mt-1">Réponse en 5min • 24/24</p></div><div class="bg-white/5 border border-white/10 rounded-2xl p-5"><p class="text-[11px] tracking-widest opacity-50">INSTAGRAM</p><p class="font-bold mt-1">@shaan.fes</p></div></div>
-<div class="bg-[#F6F3EB] text-black rounded-[28px] p-6 rotate-1 hover:rotate-0 transition duration-500"><div class="flex gap-2 mb-4"><img src="photo1.jpg" class="w-full h-[90px] object-cover rounded-xl"><img src="photo2.jpg" class="w-full h-[90px] object-cover rounded-xl"><img src="photo3.jpg" class="w-full h-[90px] object-cover rounded-xl"></div><h3 class="bebas text-[24px]">DROP 01 - LIMITED</h3><p class="text-[11px] opacity-60 mt-2">30 pièces bark. Mlli kaykhlass, ma kayrja3ch.</p><a href="https://wa.me/212684745688" class="mt-4 block bg-black text-white text-center py-3 rounded-full text-[11px] font-bold">COMMANDER MAINTENANT →</a></div>
+<!-- SHOP -->
+<section id="shop" class="max-w-7xl mx-auto px-6 py-20 bg-white">
+<h2 class="bebas text-[40px] mb-10">SHOP / DROP 01</h2>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-[#F6F3EB] rounded-[24px] p-4"><img src="photo1.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><p class="font-bold mt-3 text-[14px]">NIGHT SPIDER • 299 MAD</p><a href="https://wa.me/212684745688?text=Bghit LOOK 1" class="mt-3 block bg-black text-white text-center py-3 rounded-full text-[11px] font-bold">COMMANDER</a></div>
+<div class="bg-[#F6F3EB] rounded-[24px] p-4"><img src="photo2.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><p class="font-bold mt-3 text-[14px]">BEACH DAY • 249 MAD</p><a href="https://wa.me/212684745688?text=Bghit LOOK 2" class="mt-3 block border border-black text-center py-3 rounded-full text-[11px] font-bold">COMMANDER</a></div>
+<div class="bg-[#F6F3EB] rounded-[24px] p-4"><img src="photo3.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><p class="font-bold mt-3 text-[14px]">STREET CREW • 499 MAD</p><a href="https://wa.me/212684745688?text=Bghit LOOK 3" class="mt-3 block border border-black text-center py-3 rounded-full text-[11px] font-bold">COMMANDER</a></div>
 </div>
-<div class="relative border-t border-white/10 py-6 px-6 flex justify-between items-center text-[10px] opacity-30 tracking-widest"><span>© 2026 SHAAN</span><span>FOR THE QUIET ONES</span><span>MADE IN MOROCCO 🕷️</span></div>
+</section>
+
+<!-- FOOTER PRO -->
+<footer id="contact" class="bg-black text-white py-16 px-6 text-center">
+<p class="bebas text-[48px] tracking-widest">SHAAN</p>
+<p class="opacity-40 text-[11px] tracking-[0.3em] mt-2">FOR THE QUIET ONES • MADE IN MOROCCO</p>
+<a href="https://wa.me/212684745688" class="mt-8 inline-block bg-white text-black px-10 py-4 rounded-full font-bold text-[11px]">WHATSAPP 0684745688</a>
+<p class="mt-12 opacity-20 text-[10px] tracking-widest">© 2026 SHAAN • LIMITED • NO RESTOCK</p>
 </footer>
 
 <script>
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('menu-open')}
-function enterSite(){document.getElementById('webTrigger').classList.add('animating');setTimeout(()=>{document.getElementById('intro').classList.add('hide');localStorage.setItem('shaan_entered','1')},700)}
+function enterSite(){
+const trig=document.getElementById('webTrigger');
+trig.style.transform='translateX(-50%) scale(20)';
+trig.style.opacity='0';
+setTimeout(()=>{document.getElementById('intro').classList.add('hide');localStorage.setItem('shaan_entered','1')},600)
+}
 if(localStorage.getItem('shaan_entered')) document.getElementById('intro').classList.add('hide');
-const c=document.getElementById('webCanvas'),x=c.getContext('2d');function resize(){c.width=innerWidth;c.height=innerHeight}resize();onresize=resize;
-function draw(){x.clearRect(0,0,c.width,c.height);x.strokeStyle='rgba(255,255,255,0.14)';x.lineWidth=1;const cx=c.width/2,cy=c.height/2;for(let r=60;r<Math.max(c.width,c.height);r+=80){x.beginPath();for(let a=0;a<Math.PI*2;a+=0.2){let px=cx+Math.cos(a)*r,py=cy+Math.sin(a)*r;if(a==0)x.moveTo(px,py);else x.lineTo(px,py)}x.closePath();x.stroke()}for(let a=0;a<Math.PI*2;a+=Math.PI/10){x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+Math.cos(a)*c.width,cy+Math.sin(a)*c.height);x.stroke()}requestAnimationFrame(draw)}draw();
+// CHEBKA 3D PRO
+const c=document.getElementById('webCanvas'),x=c.getContext('2d');
+function resize(){c.width=innerWidth;c.height=innerHeight}resize();onresize=resize;
+let t=0;
+function draw(){
+x.clearRect(0,0,c.width,c.height);
+const cx=c.width/2, cy=c.height/2;
+x.strokeStyle='rgba(255,255,255,0.12)'; x.lineWidth=1;
+// Cercles 3D
+for(let r=40;r<Math.max(c.width,c.height);r+=60){
+x.beginPath();
+for(let a=0;a<Math.PI*2;a+=0.1){
+let wobble = Math.sin(a*3 + t)*3;
+let px=cx+Math.cos(a)*(r+wobble);
+let py=cy+Math.sin(a)*(r+wobble);
+if(a==0) x.moveTo(px,py); else x.lineTo(px,py);
+}
+x.closePath(); x.stroke();
+}
+// Lignes radial 3D avec glow
+for(let a=0;a<Math.PI*2;a+=Math.PI/12){
+x.beginPath();
+x.moveTo(cx,cy);
+let lx=cx+Math.cos(a)*c.width;
+let ly=cy+Math.sin(a)*c.height;
+x.lineTo(lx,ly);
+x.stroke();
+}
+t+=0.02;
+requestAnimationFrame(draw);
+}
+draw();
 </script>
 </body>
 </html>
