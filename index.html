@@ -1,80 +1,123 @@
 <!DOCTYPE html>
 <html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SHAAN - FAM DROP 01 | Fès x Tanger</title>
+<title>SHAAN - Fès</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-<style>.bebas{font-family:'Bebas Neue'}body{font-family:'Inter'}html{scroll-behavior:smooth}</style>
-</head>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>.bebas{font-family:'Bebas Neue'}body{font-family:'Inter'}html{scroll-behavior:smooth}
+#intro{position:fixed;inset:0;z-index:9999;background:#000;display:flex;align-items:center;justify-content:center;transition:all 0.8s cubic-bezier(0.7,0,0.3,1)}
+#intro.hide{transform:translateY(-100%);opacity:0;pointer-events:none}
+.web{position:absolute;inset:0;opacity:0.15}
+.menu-open{transform:translateX(0)!important}
+</style></head>
 <body class="bg-[#F6F3EB] text-black">
 
-<!-- NAVBAR PRO -->
+<!-- 🕸️ INTRO / CHEBKA DYL 3AYNKABOUT -->
+<div id="intro" onclick="enterSite()">
+<canvas id="webCanvas" class="web"></canvas>
+<div class="relative z-10 text-center px-6">
+<div class="text-[100px] md:text-[140px] animate-pulse">🕷️</div>
+<h1 class="bebas text-[#F6F3EB] text-[56px] md:text-[84px] leading-[0.85] mt-4">SHAAN<br><span class="opacity-40">FÈS</span></h1>
+<p class="text-[#F6F3EB]/60 text-[11px] tracking-[0.4em] mt-6">FOR THE QUIET ONES</p>
+<div class="mt-12 border border-[#F6F3EB]/20 rounded-full px-8 py-4 inline-block cursor-pointer hover:bg-[#F6F3EB] hover:text-black transition group">
+<p class="text-[#F6F3EB] group-hover:text-black text-[12px] tracking-[0.3em] font-bold">CLICK TO ENTER →</p>
+</div>
+<p class="text-[#F6F3EB]/30 text-[9px] tracking-widest mt-4">DROP 01 / LIMITED</p>
+</div>
+</div>
+
+<!-- ☰ NAVBAR + HAMBURGER -->
 <nav class="fixed top-0 w-full z-50 bg-[#F6F3EB]/90 backdrop-blur-xl border-b border-black/5">
 <div class="max-w-7xl mx-auto px-6 h-[64px] flex items-center justify-between">
-<div class="flex items-center gap-2"><span class="bebas text-[22px] tracking-widest">SHAAN 🕷️</span></div>
-<div class="hidden md:flex gap-8 text-[11px] tracking-[0.2em] font-bold"><a href="#drop">FAM</a><a href="#shop">SHOP</a><a href="#contact">CONTACT</a></div>
-<a href="https://wa.me/212684745688" class="bg-black text-white px-6 py-2.5 rounded-full text-[10px] font-bold tracking-widest">WHATSAPP</a>
+<span class="bebas text-[22px] tracking-widest">SHAAN 🕷️</span>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-8 text-[11px] tracking-widest font-bold mr-6"><a href="#accueil" class="hover:opacity-50">ACCUEIL</a><a href="#shop" class="hover:opacity-50">SHOP</a><a href="#contact" class="hover:opacity-50">CONTACT</a></div>
+<button onclick="toggleMenu()" class="w-10 h-10 bg-black rounded-full flex flex-col items-center justify-center gap-1.5">
+<span class="w-4 h-[2px] bg-white block"></span><span class="w-4 h-[2px] bg-white block"></span><span class="w-4 h-[2px] bg-white block"></span>
+</button>
+</div>
 </div>
 </nav>
 
-<!-- HERO -->
-<section class="pt-[64px] max-w-7xl mx-auto px-6 py-12 md:py-20 grid md:grid-cols-2 gap-10 items-center">
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="fixed inset-0 z-[60] bg-black text-[#F6F3EB] translate-x-full transition-all duration-500 flex flex-col justify-center px-10">
+<button onclick="toggleMenu()" class="absolute top-6 right-6 w-10 h-10 border border-white/20 rounded-full flex items-center justify-center">✕</button>
+<a onclick="toggleMenu()" href="#accueil" class="bebas text-[64px] leading-none hover:opacity-50">ACCUEIL</a>
+<a onclick="toggleMenu()" href="#shop" class="bebas text-[64px] leading-none hover:opacity-50">SHOP</a>
+<a onclick="toggleMenu()" href="#contact" class="bebas text-[64px] leading-none hover:opacity-50">CONTACT</a>
+<a onclick="toggleMenu()" href="#drop" class="bebas text-[64px] leading-none opacity-30">FAM DROP</a>
+<div class="mt-20 text-[11px] opacity-50 tracking-widest">FÈS • TANGER • EST 2024 • LIMITED</div>
+<a href="https://wa.me/212684745688" class="mt-6 bg-[#F6F3EB] text-black px-8 py-4 rounded-full text-center text-[11px] font-bold tracking-widest">WHATSAPP 0684745688</a>
+</div>
+
+<!-- ACCUEIL / HERO -->
+<section id="accueil" class="pt-[64px] max-w-7xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
 <div>
-<div class="inline-flex bg-black text-white px-3 py-1 rounded-full text-[9px] tracking-widest mb-6">● FAM DROP • TANGER • FÈS • LIMITED</div>
-<h1 class="bebas text-[64px] md:text-[100px] leading-[0.85]">SHAAN<br>FAM<br>DROP 01.</h1>
-<p class="mt-6 text-[14px] opacity-60 max-w-[360px] leading-relaxed">Machines de la rue. C'est pas des mannequins, c'est la vraie famille. Tanger to Fès. For the quiet ones.</p>
-<div class="mt-8 flex gap-3"><a href="#drop" class="bg-black text-white px-8 py-4 rounded-full text-[11px] font-bold tracking-widest">VOIR LA FAM →</a><a href="#shop" class="border border-black px-8 py-4 rounded-full text-[11px] font-bold tracking-widest">SHOP</a></div>
-<div class="mt-10 flex gap-8 text-[11px]"><div><p class="bebas text-[20px]">24H</p><p class="opacity-50">Livraison Fès</p></div><div><p class="bebas text-[20px]">100%</p><p class="opacity-50">Limited</p></div><div><p class="bebas text-[20px]">3</p><p class="opacity-50">Looks</p></div></div>
+<div class="inline-flex bg-black text-white px-3 py-1 rounded-full text-[9px] tracking-widest mb-6">● DROP 01 LIVE - FÈS / TANGER</div>
+<h1 class="bebas text-[64px] md:text-[96px] leading-[0.85]">FOR THE<br><span class="opacity-20">QUIET</span><br>ONES.</h1>
+<p class="mt-6 text-[14px] opacity-60 max-w-[360px]">SHAAN - machi brand dyal models, hna l'vrai famille. Tanger to Fès.</p>
+<div class="mt-8 flex gap-3"><a href="#shop" class="bg-black text-white px-8 py-4 rounded-full text-[11px] font-bold tracking-widest">SHOP NOW →</a></div>
 </div>
-<div class="bg-white rounded-[32px] p-3 shadow-[0_20px_60px_rgba(0,0,0,0.08)] rotate-[1deg]"><img src="photo1.jpg" class="w-full h-[420px] object-cover rounded-[24px]" alt="SHAAN Night"><div class="p-4 flex justify-between items-end"><div><p class="bebas text-[20px]">NIGHT SPIDER • TANGER</p><p class="text-[11px] opacity-50">FAM DROP 01</p></div><p class="bebas text-[18px]">FÈS</p></div></div>
+<div class="bg-white rounded-[32px] p-3 shadow-xl rotate-1"><img src="photo1.jpg" class="w-full h-[460px] object-cover rounded-[24px]"><div class="p-4 flex justify-between"><span class="bebas text-[20px]">SHAAN FAM - TANGER</span><span class="text-[11px] opacity-50">DROP 01</span></div></div>
 </section>
 
-<!-- BARRE -->
-<div class="bg-black text-white py-3 overflow-hidden"><div class="whitespace-nowrap text-[11px] tracking-[0.35em] animate-pulse text-center">SHAAN • FÈS • TANGER • LIMITED DROP • NO RESTOCK • SHAAN • FÈS • TANGER • LIMITED •</div></div>
+<div class="bg-black text-white py-3 text-center text-[11px] tracking-[0.35em]">SHAAN • FÈS • TANGER • LIMITED • NO RESTOCK • SHAAN •</div>
 
-<!-- FAM GALLERY = DROP -->
-<section id="drop" class="max-w-7xl mx-auto px-6 py-20">
-<div class="flex justify-between items-end mb-10"><h2 class="bebas text-[44px]">FAM / GALLERY</h2><p class="text-[11px] opacity-50 tracking-widest">3 MOMENTS • REAL LIFE</p></div>
+<!-- SHOP - B TSWAR DYALK -->
+<section id="shop" class="max-w-7xl mx-auto px-6 py-20 bg-white">
+<div class="flex justify-between items-end mb-10"><h2 class="bebas text-[48px]">SHOP / DROP 01</h2><p class="text-[11px] opacity-50 tracking-widest">TSWAR DYAL FAM = PRODUITS</p></div>
 <div class="grid md:grid-cols-3 gap-6">
-<div class="bg-white rounded-[24px] p-3"><img src="photo1.jpg" class="w-full h-[360px] object-cover rounded-[16px]"><div class="p-3"><p class="bebas text-[18px]">NIGHT SPIDER</p><p class="text-[11px] opacity-60">Corniche Tanger • Night crew • 🕷️</p></div></div>
-<div class="bg-white rounded-[24px] p-3"><img src="photo2.jpg" class="w-full h-[360px] object-cover rounded-[16px]"><div class="p-3"><p class="bebas text-[18px]">BEACH DAY</p><p class="text-[11px] opacity-60">Plage Tanger • Summer 2025</p></div></div>
-<div class="bg-white rounded-[24px] p-3"><img src="photo3.jpg" class="w-full h-[360px] object-cover rounded-[16px]"><div class="p-3"><p class="bebas text-[18px]">STREET CREW</p><p class="text-[11px] opacity-60">Night street • Fès x Tanger fam</p></div></div>
+
+<!-- Produit 1 = photo1 -->
+<div class="bg-[#F6F3EB] rounded-[28px] p-4 hover:shadow-xl transition group">
+<div class="relative overflow-hidden rounded-[20px]"><img src="photo1.jpg" class="w-full h-[380px] object-cover group-hover:scale-105 transition duration-700"><div class="absolute top-3 left-3 bg-black text-white px-3 py-1 rounded-full text-[9px]">BESTSELLER</div></div>
+<div class="p-3"><div class="flex justify-between items-start"><div><p class="font-bold text-[15px]">SPIDER NIGHT CREW</p><p class="text-[11px] opacity-50">Tanger • Limited 30 pcs • S M L XL</p></div><p class="bebas text-[22px]">299 MAD</p></div>
+<a href="https://wa.me/212684745688?text=Salam%20SHAAN%20bghit%20SPIDER%20NIGHT%20photo1" class="mt-4 block bg-black text-white text-center py-3.5 rounded-full text-[11px] font-bold tracking-widest">COMMANDER CE LOOK</a></div>
+</div>
+
+<!-- Produit 2 = photo2 -->
+<div class="bg-[#F6F3EB] rounded-[28px] p-4 hover:shadow-xl transition group">
+<div class="relative overflow-hidden rounded-[20px]"><img src="photo2.jpg" class="w-full h-[380px] object-cover group-hover:scale-105 transition duration-700"><div class="absolute top-3 left-3 bg-white text-black px-3 py-1 rounded-full text-[9px]">SUMMER</div></div>
+<div class="p-3"><div class="flex justify-between items-start"><div><p class="font-bold text-[15px]">BEACH DAY TEE</p><p class="text-[11px] opacity-50">Tanger Plage • Relaxed fit • M L XL</p></div><p class="bebas text-[22px]">249 MAD</p></div>
+<a href="https://wa.me/212684745688?text=Salam%20SHAAN%20bghit%20BEACH%20DAY%20photo2" class="mt-4 block border border-black text-center py-3.5 rounded-full text-[11px] font-bold tracking-widest">COMMANDER CE LOOK</a></div>
+</div>
+
+<!-- Produit 3 = photo3 -->
+<div class="bg-[#F6F3EB] rounded-[28px] p-4 hover:shadow-xl transition group">
+<div class="relative overflow-hidden rounded-[20px]"><img src="photo3.jpg" class="w-full h-[380px] object-cover group-hover:scale-105 transition duration-700"><div class="absolute top-3 left-3 bg-black text-white px-3 py-1 rounded-full text-[9px]">LIMITED</div></div>
+<div class="p-3"><div class="flex justify-between items-start"><div><p class="font-bold text-[15px]">STREET CREW HOODIE</p><p class="text-[11px] opacity-50">Fès x Tanger • 6 pcs crew</p></div><p class="bebas text-[22px]">499 MAD</p></div>
+<a href="https://wa.me/212684745688?text=Salam%20SHAAN%20bghit%20STREET%20CREW%20photo3" class="mt-4 block border border-black text-center py-3.5 rounded-full text-[11px] font-bold tracking-widest">COMMANDER CE LOOK</a></div>
+</div>
+
 </div>
 </section>
 
-<!-- SHOP PRO -->
-<section id="shop" class="bg-white py-20">
-<div class="max-w-7xl mx-auto px-6">
-<div class="flex justify-between items-end mb-10"><h2 class="bebas text-[44px]">SHOP / DROP 01</h2><p class="text-[11px] opacity-50">PAYEMENT À LA LIVRAISON</p></div>
-<div class="grid md:grid-cols-3 gap-6">
-<div class="bg-[#F6F3EB] rounded-[24px] p-6"><div class="bg-white rounded-[16px] h-[260px] flex items-center justify-center text-[70px]">🕷️</div><div class="mt-4 flex justify-between"><div><p class="font-bold text-[14px]">SHAAN SPIDER TEE</p><p class="text-[11px] opacity-50">Noir • S M L XL • Limited 50</p></div><p class="bebas text-[20px]">299 MAD</p></div><a href="https://wa.me/212684745688?text=Salam%20SHAAN%20bghit%20SPIDER%20TEE%20299MAD" class="mt-4 block bg-black text-white text-center py-3 rounded-full text-[11px] font-bold tracking-widest">COMMANDER WHATSAPP</a></div>
-<div class="bg-[#F6F3EB] rounded-[24px] p-6"><div class="bg-white rounded-[16px] h-[260px] flex items-center justify-center text-[70px]">👕</div><div class="mt-4 flex justify-between"><div><p class="font-bold text-[14px]">ESSENTIAL HOODIE</p><p class="text-[11px] opacity-50">Beige / Noir • M L XL</p></div><p class="bebas text-[20px]">499 MAD</p></div><a href="https://wa.me/212684745688?text=Salam%20bghit%20HOODIE%20SHAAN%20499MAD" class="mt-4 block border border-black text-center py-3 rounded-full text-[11px] font-bold tracking-widest">COMMANDER</a></div>
-<div class="bg-[#F6F3EB] rounded-[24px] p-6"><div class="bg-white rounded-[16px] h-[260px] flex items-center justify-center text-[70px]">🧢</div><div class="mt-4 flex justify-between"><div><p class="font-bold text-[14px]">QUIET CAP</p><p class="text-[11px] opacity-50">Noir • One size</p></div><p class="bebas text-[20px]">149 MAD</p></div><a href="https://wa.me/212684745688?text=Salam%20bghit%20CAP%20SHAAN%20149MAD" class="mt-4 block border border-black text-center py-3 rounded-full text-[11px] font-bold tracking-widest">COMMANDER</a></div>
+<!-- CONTACT -->
+<section id="contact" class="bg-black text-[#F6F3EB] py-20 px-6"><div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+<div><h2 class="bebas text-[56px] leading-[0.9]">CONTACT<br>& ORDER.</h2><p class="mt-4 opacity-60 text-[14px] max-w-[340px]">Sift liya WhatsApp - kan-jawb f 5min. Livraison 24h Fès.</p>
+<div class="mt-8 space-y-3">
+<a href="https://wa.me/212684745688" class="block bg-[#F6F3EB] text-black p-4 rounded-2xl flex items-center gap-4"><div class="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center">💬</div><div><p class="font-bold text-[13px]">WhatsApp Direct</p><p class="text-[11px] opacity-60">0684745688 - Click hna</p></div></a>
+<div class="border border-white/10 p-4 rounded-2xl flex items-center gap-4"><div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">📸</div><div><p class="font-bold text-[13px]">Instagram</p><p class="text-[11px] opacity-60">@shaan.fes • DM</p></div></div>
+<div class="border border-white/10 p-4 rounded-2xl flex items-center gap-4"><div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">📍</div><div><p class="font-bold text-[13px]">Livraison</p><p class="text-[11px] opacity-60">Fès 20MAD 24h • Hors Fès 2-3j 30MAD</p></div></div>
 </div>
 </div>
-</section>
+<div class="bg-[#F6F3EB] text-black rounded-[32px] p-8"><h3 class="bebas text-[28px]">COMMANDER MAINTENANT</h3><p class="text-[12px] opacity-60 mt-2">3 looks, 3 histoires. Choisir ton style.</p>
+<div class="mt-6 grid grid-cols-3 gap-2"><img src="photo1.jpg" class="h-[80px] w-full object-cover rounded-xl"><img src="photo2.jpg" class="h-[80px] w-full object-cover rounded-xl"><img src="photo3.jpg" class="h-[80px] w-full object-cover rounded-xl"></div>
+<a href="https://wa.me/212684745688?text=Salam%20SHAAN%20bghit%20ncommander%20DROP%2001" class="mt-6 block bg-black text-white text-center py-4 rounded-full font-bold text-[12px] tracking-widest">WHATSAPP - 0684745688</a>
+<p class="text-[10px] opacity-40 text-center mt-4">Paiement à la livraison • Échange 24h • Pas de restock</p>
+</div>
+</div></section>
 
-<!-- STORY -->
-<section class="bg-black text-[#F6F3EB] py-20 px-6"><div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12"><h2 class="bebas text-[52px] leading-[0.9]">BORN IN FÈS.<br>MADE FOR<br>THE STREETS.</h2><div class="opacity-70 text-[14px] leading-relaxed space-y-4 max-w-[400px]"><p>SHAAN tla9 f Fès. Ma kan-dir-och fast fashion. 30-50 pièces bark, kol drop kay-tba3 w safi.</p><p>Spider hiya sbar, khdma f dal. Nhar kay-khrej, kolchi kay-chouf.</p><p class="pt-4 text-[11px] tracking-widest">— ABDELOUAHAB, FONDATEUR - FÈS / TANGER</p></div></div></section>
+<footer class="bg-black border-t border-white/10 py-8 text-center text-[#F6F3EB]/30 text-[10px] tracking-widest">© 2026 SHAAN - FOR THE QUIET ONES - FÈS / TANGER - MADE IN MOROCCO</footer>
 
-<!-- CONTACT PRO -->
-<section id="contact" class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12">
-<div><h2 class="bebas text-[52px] leading-none">CONTACT<br>& ORDERS.</h2><p class="mt-4 opacity-60 text-[14px] max-w-[340px]">Bghit t-commander? Sift liya WhatsApp direct. Jawb f 5min.</p>
-<div class="mt-8 space-y-4">
-<a href="https://wa.me/212684745688" class="flex items-center gap-4 bg-black text-white p-4 rounded-2xl"><div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">💬</div><div><p class="font-bold text-[13px]">WhatsApp</p><p class="text-[11px] opacity-70">0684745688 - Réponse rapide</p></div></a>
-<div class="flex items-center gap-4 border border-black/10 p-4 rounded-2xl"><div class="w-10 h-10 bg-[#F6F3EB] rounded-full flex items-center justify-center">📸</div><div><p class="font-bold text-[13px]">Instagram</p><p class="text-[11px] opacity-60">@shaan.fes • DM ouvert</p></div></div>
-<div class="flex items-center gap-4 border border-black/10 p-4 rounded-2xl"><div class="w-10 h-10 bg-[#F6F3EB] rounded-full flex items-center justify-center">📍</div><div><p class="font-bold text-[13px]">Livraison</p><p class="text-[11px] opacity-60">Fès 24h (20 MAD) • Hors Fès 2-3j</p></div></div>
-</div>
-</div>
-<div class="bg-white rounded-[32px] p-8 shadow-lg"><h3 class="bebas text-[24px] mb-6">COMMANDER MAINTENANT</h3>
-<div class="space-y-3">
-<a href="https://wa.me/212684745688?text=Salam%20SHAAN%20bghit%20ncommander" class="block w-full bg-black text-white text-center py-4 rounded-full font-bold text-[12px] tracking-widest">WHATSAPP - 0684745688</a>
-<p class="text-[11px] opacity-50 text-center pt-4">Paiement à la livraison • Échange possible • Pas de restock, quand c'est fini c'est fini</p>
-<img src="photo3.jpg" class="w-full h-[200px] object-cover rounded-[16px] mt-6 opacity-80">
-</div>
-</div>
-</section>
-
-<footer class="border-t border-black/10 py-10 text-center"><p class="bebas text-[20px] tracking-widest">SHAAN</p><p class="text-[10px] opacity-30 tracking-widest mt-2">© 2026 SHAAN - FÈS • TANGER • FOR THE QUIET ONES • MADE IN MOROCCO</p></footer>
-
+<script>
+// INTRO
+function enterSite(){document.getElementById('intro').classList.add('hide'); localStorage.setItem('shaan_entered','1')}
+if(localStorage.getItem('shaan_entered')){document.getElementById('intro').classList.add('hide')}
+// MENU
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('menu-open')}
+// SPIDER WEB CANVAS
+const c=document.getElementById('webCanvas'),x=c.getContext('2d');function resize(){c.width=window.innerWidth;c.height=window.innerHeight}resize();window.onresize=resize;
+let t=0;function draw(){x.clearRect(0,0,c.width,c.height);x.strokeStyle='rgba(255,255,255,0.15)';x.lineWidth=1;const cx=c.width/2,cy=c.height/2;for(let r=50;r<Math.max(c.width,c.height);r+=70){x.beginPath();for(let a=0;a<Math.PI*2;a+=0.15){let px=cx+Math.cos(a)*r+Math.sin(a*3+t)*5,py=cy+Math.sin(a)*r+Math.cos(a*2+t)*5;if(a==0)x.moveTo(px,py);else x.lineTo(px,py)}x.closePath();x.stroke()}for(let a=0;a<Math.PI*2;a+=Math.PI/8){x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+Math.cos(a)*c.width,cy+Math.sin(a)*c.height);x.stroke()}t+=0.01;requestAnimationFrame(draw)}draw();
+</script>
 </body>
 </html>
