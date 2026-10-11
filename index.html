@@ -7,79 +7,43 @@
 .bebas{font-family:'Bebas Neue'}body{font-family:'Inter';background:#F6F3EB}html{scroll-behavior:smooth}
 #intro{position:fixed;inset:0;z-index:9999;background:#050505;display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(0.8,0,0.2,1)}
 #intro.hide{transform:translateY(-100%)}
-.web{position:absolute;inset:0}
+.web{position:absolute;inset:0;width:100%;height:100%}
 .menu-open{transform:translateX(0)!important}
-.web-side{position:absolute;left:-100px;bottom:-100px;width:600px;height:600px;opacity:0;animation:webIn 1.2s ease-out forwards 0.5s}
-@keyframes webIn{to{left:0;bottom:0;opacity:0.25}}
 </style></head>
 <body class="text-black">
-
-<!-- INTRO - PAGE KHLA + LOGO + CHEBKA KATLA3 MEN JNB -->
 <div id="intro" onclick="enterSite()">
 <canvas id="webCanvas" class="web"></canvas>
-<!-- Chebka SVG katla3 men jnb -->
-<svg class="web-side" viewBox="0 0 400 400" fill="none"><g stroke="white" stroke-width="1" opacity="0.6">
-<circle cx="0" cy="400" r="50"/><circle cx="0" cy="400" r="100"/><circle cx="0" cy="400" r="150"/><circle cx="0" cy="400" r="200"/><circle cx="0" cy="400" r="250"/><circle cx="0" cy="400" r="300"/>
-<line x1="0" y1="400" x2="400" y2="400"/><line x1="0" y1="400" x2="350" y2="200"/><line x1="0" y1="400" x2="280" y2="100"/><line x1="0" y1="400" x2="180" y2="40"/><line x1="0" y1="400" x2="80" y2="0"/>
-</g></svg>
-
-<div class="relative z-10 text-center">
-<div class="text-[64px] mb-4">🕷️</div>
-<h1 class="bebas text-white text-[52px] tracking-[0.3em]">SHAAN</h1>
-<div class="mt-10 flex flex-col items-center gap-3">
-<div class="w-[64px] h-[64px] bg-white rounded-full flex items-center justify-center animate-pulse"><span class="text-[28px]">🕸️</span></div>
-<p class="text-white/60 text-[9px] tracking-[0.4em] font-bold">CLICK TO ENTER</p>
+<div class="relative z-10 flex flex-col items-center">
+<div class="text-[48px] mb-6">🕷️</div>
+<h1 class="text-white text-[42px] tracking-[0.5em] font-bold" style="letter-spacing:0.4em;">SHAAN</h1>
+<div class="mt-12 flex flex-col items-center gap-4">
+<div class="w-[72px] h-[72px] bg-[#2a2a2a] rounded-full flex items-center justify-center"><span class="text-[28px]">🕸️</span></div>
+<p class="text-white/50 text-[9px] tracking-[0.4em] font-bold">CLICK TO ENTER</p>
 </div>
 </div>
 </div>
-
-<!-- NAVBAR - GHA 3 CHRTAT -->
-<nav class="fixed top-0 w-full z-50 bg-[#F6F3EB] border-b border-black/5">
-<div class="max-w-7xl mx-auto px-6 h-[64px] flex justify-between items-center">
-<span class="bebas text-[20px] tracking-widest">SHAAN 🕷️</span>
-<button onclick="toggleMenu()" class="w-10 h-10 bg-black rounded-full flex flex-col items-center justify-center gap-[4px]"><span class="w-[14px] h-[1.5px] bg-white"></span><span class="w-[14px] h-[1.5px] bg-white"></span><span class="w-[14px] h-[1.5px] bg-white"></span></button>
-</div>
-</nav>
-
+<nav class="fixed top-0 w-full z-50 bg-[#F6F3EB] border-b border-black/5"><div class="max-w-7xl mx-auto px-6 h-[64px] flex justify-between items-center"><span class="bebas text-[20px]">SHAAN 🕷️</span><button onclick="toggleMenu()" class="w-10 h-10 bg-black rounded-full flex flex-col items-center justify-center gap-[4px]"><span class="w-[14px] h-[1.5px] bg-white"></span><span class="w-[14px] h-[1.5px] bg-white"></span><span class="w-[14px] h-[1.5px] bg-white"></span></button></div></nav>
+<!-- MENU SGHIR CLEAN -->
 <div id="mobileMenu" class="fixed inset-0 z-[60] bg-black text-white translate-x-full transition-all duration-500 flex flex-col justify-center px-10">
-<button onclick="toggleMenu()" class="absolute top-6 right-6 w-10 h-10 border border-white/20 rounded-full">✕</button>
-<a onclick="toggleMenu()" href="#accueil" class="bebas text-[72px] leading-none hover:opacity-50">ACCUEIL</a>
-<a onclick="toggleMenu()" href="#shop" class="bebas text-[72px] leading-none hover:opacity-50">SHOP</a>
-<a onclick="toggleMenu()" href="#contact" class="bebas text-[72px] leading-none hover:opacity-50">CONTACT</a>
-<a href="https://wa.me/212684745688" class="mt-10 bg-white text-black px-8 py-4 rounded-full text-center text-[11px] font-bold inline-block">WHATSAPP</a>
+<button onclick="toggleMenu()" class="absolute top-6 right-6 w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-[12px]">✕</button>
+<div class="space-y-3">
+<a onclick="toggleMenu()" href="#accueil" class="block bebas text-[36px] leading-none hover:opacity-50 transition">ACCUEIL</a>
+<a onclick="toggleMenu()" href="#shop" class="block bebas text-[36px] leading-none hover:opacity-50 transition">SHOP</a>
+<a onclick="toggleMenu()" href="#contact" class="block bebas text-[36px] leading-none hover:opacity-50 transition">CONTACT</a>
 </div>
-
-<!-- HERO - GHA LIMITED BOHDA -->
-<section id="accueil" class="pt-[64px] min-h-[92vh] flex items-center justify-center text-center px-6 bg-[#F6F3EB]">
-<div>
-<h1 class="bebas text-[88px] md:text-[180px] leading-[0.8]">
-SHAAN<br>
-<span class="text-transparent" style="-webkit-text-stroke:1.5px black;">SHAAN</span><br>
-SHAAN
-</h1>
-<!-- HNA 7AYEDNA FES 2024 DROP 01 - B9AT GHA LIMITED -->
-<p class="mt-8 text-[13px] tracking-[0.5em] opacity-30">LIMITED</p>
-<a href="#shop" class="mt-10 inline-block bg-black text-white px-12 py-4 rounded-full text-[11px] font-bold tracking-widest">ENTER SHOP →</a>
+<div class="mt-12 pt-8 border-t border-white/10">
+<p class="opacity-40 text-[10px] tracking-[0.4em]">SHAAN • LIMITED • NO RESTOCK</p>
+<a href="https://wa.me/212684745688" class="mt-6 inline-block bg-white text-black px-8 py-3 rounded-full text-[11px] font-bold tracking-widest">WHATSAPP 0684745688</a>
 </div>
-</section>
-
-<section id="shop" class="max-w-7xl mx-auto px-6 py-20 bg-white">
-<h2 class="bebas text-[40px] mb-10">SHOP / DROP 01</h2>
-<div class="grid md:grid-cols-3 gap-6">
-<div class="bg-[#F6F3EB] rounded-[24px] p-4"><img src="photo1.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><p class="font-bold mt-3">NIGHT SPIDER • 299 MAD</p><a href="https://wa.me/212684745688?text=Bghit LOOK 1" class="mt-3 block bg-black text-white text-center py-3 rounded-full text-[11px] font-bold">COMMANDER</a></div>
-<div class="bg-[#F6F3EB] rounded-[24px] p-4"><img src="photo2.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><p class="font-bold mt-3">BEACH DAY • 249 MAD</p><a href="https://wa.me/212684745688?text=Bghit LOOK 2" class="mt-3 block border border-black text-center py-3 rounded-full text-[11px] font-bold">COMMANDER</a></div>
-<div class="bg-[#F6F3EB] rounded-[24px] p-4"><img src="photo3.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><p class="font-bold mt-3">STREET CREW • 499 MAD</p><a href="https://wa.me/212684745688?text=Bghit LOOK 3" class="mt-3 block border border-black text-center py-3 rounded-full text-[11px] font-bold">COMMANDER</a></div>
 </div>
-</section>
-
-<footer id="contact" class="bg-black text-white py-16 text-center"><p class="bebas text-[44px]">SHAAN</p><p class="opacity-30 text-[11px] tracking-widest mt-2">LIMITED • NO RESTOCK</p><a href="https://wa.me/212684745688" class="mt-6 inline-block bg-white text-black px-10 py-3 rounded-full text-[11px] font-bold">WHATSAPP 0684745688</a></footer>
-
+<section id="accueil" class="pt-[64px] min-h-[92vh] flex items-center justify-center text-center px-6 bg-[#F6F3EB]"><div><h1 class="bebas text-[88px] md:text-[180px] leading-[0.8]">SHAAN<br><span class="text-transparent" style="-webkit-text-stroke:1.5px black;">SHAAN</span><br>SHAAN</h1><p class="mt-8 text-[13px] tracking-[0.5em] opacity-30">LIMITED</p><a href="#shop" class="mt-10 inline-block bg-black text-white px-12 py-4 rounded-full text-[11px] font-bold tracking-widest">ENTER SHOP →</a></div></section>
+<section id="shop" class="max-w-7xl mx-auto px-6 py-20 bg-white"><h2 class="bebas text-[40px] mb-10">SHOP / DROP 01</h2><div class="grid md:grid-cols-3 gap-6"><div class="bg-[#F6F3EB] rounded-[24px] p-4"><img src="photo1.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><p class="font-bold mt-3">NIGHT SPIDER • 299 MAD</p><a href="https://wa.me/212684745688?text=Bghit LOOK 1" class="mt-3 block bg-black text-white text-center py-3 rounded-full text-[11px] font-bold">COMMANDER</a></div><div class="bg-[#F6F3EB] rounded-[24px] p-4"><img src="photo2.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><p class="font-bold mt-3">BEACH DAY • 249 MAD</p><a href="https://wa.me/212684745688?text=Bghit LOOK 2" class="mt-3 block border border-black text-center py-3 rounded-full text-[11px] font-bold">COMMANDER</a></div><div class="bg-[#F6F3EB] rounded-[24px] p-4"><img src="photo3.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><p class="font-bold mt-3">STREET CREW • 499 MAD</p><a href="https://wa.me/212684745688?text=Bghit LOOK 3" class="mt-3 block border border-black text-center py-3 rounded-full text-[11px] font-bold">COMMANDER</a></div></div></section>
+<footer id="contact" class="bg-black text-white py-16 text-center"><p class="bebas text-[44px]">SHAAN</p><a href="https://wa.me/212684745688" class="mt-6 inline-block bg-white text-black px-10 py-3 rounded-full text-[11px] font-bold">WHATSAPP 0684745688</a></footer>
 <script>
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('menu-open')}
 function enterSite(){document.getElementById('intro').classList.add('hide');localStorage.setItem('shaan_entered','1')}
-if(localStorage.getItem('shaan_entered')) document.getElementById('intro').classList.add('hide');
 const c=document.getElementById('webCanvas'),x=c.getContext('2d');function resize(){c.width=innerWidth;c.height=innerHeight}resize();onresize=resize;
-let t=0;function draw(){x.clearRect(0,0,c.width,c.height);x.strokeStyle='rgba(255,255,255,0.1)';x.lineWidth=1;const cx=c.width*0.15,cy=c.height*0.85;for(let r=30;r<800;r+=50){x.beginPath();for(let a=-0.5;a<Math.PI/2.5;a+=0.08){let px=cx+Math.cos(a)*r,py=cy+Math.sin(a)*r;if(a==-0.5) x.moveTo(px,py); else x.lineTo(px,py)}x.stroke()}for(let a=0;a<Math.PI/2;a+=Math.PI/16){x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+Math.cos(a)*800,cy+Math.sin(a)*800);x.stroke()}t+=0.01;requestAnimationFrame(draw)}draw();
+function draw(){x.clearRect(0,0,c.width,c.height);const w=c.width,h=c.height;const ox=w*0.08,oy=h*0.82;x.strokeStyle='rgba(255,255,255,0.18)';x.lineWidth=0.8;for(let r=60;r<w*1.5;r+=90){x.beginPath();for(let a=-0.6;a<1.2;a+=0.02){let px=ox+Math.cos(a)*r,py=oy+Math.sin(a)*r;if(a==-0.6) x.moveTo(px,py); else x.lineTo(px,py);}x.stroke();}for(let a=-0.6;a<1.2;a+=0.18){x.beginPath();x.moveTo(ox,oy);x.lineTo(ox+Math.cos(a)*w*1.8,oy+Math.sin(a)*w*1.8);x.stroke();}}draw();
 </script>
 </body>
 </html>
