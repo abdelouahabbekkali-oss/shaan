@@ -14,8 +14,6 @@
 .menu-open{transform:translateX(0)!important}
 </style></head>
 <body class="text-black">
-
-<!-- INTRO - CHEBKA KATBDA MEN TA7T LISSER -->
 <div id="intro" onclick="enterSite()">
 <canvas id="webCanvas"></canvas>
 <div id="content" class="relative z-10 flex flex-col items-center">
@@ -62,10 +60,10 @@ let t=0;
 function draw(){
 x.clearRect(0,0,c.width,c.height);
 const w=c.width, h=c.height;
-// CHEBKA KATBDA MEN FIN SAHAM LKHDAR - TA7T LISSER EXACT
+
 const ox=0, oy=h;
 x.shadowBlur=12; x.shadowColor='rgba(255,255,255,0.3)';
-// Arcs 3D b perspective
+
 for(let r=40;r<w*1.8;r+=68){
 let alpha = 0.32 - r*0.00012;
 if(alpha<0.05) alpha=0.05;
@@ -81,13 +79,13 @@ if(a==-0.15) x.moveTo(px,py); else x.lineTo(px,py);
 x.stroke();
 }
 x.shadowBlur=0;
-// Radial 3D
+
 for(let a=0;a<1.45;a+=0.14){
 x.strokeStyle='rgba(255,255,255,0.18)';
 x.lineWidth=0.9;
 x.beginPath();
 x.moveTo(ox,oy);
-// 3D depth - line katban b3ida
+
 let len = w*2;
 let lx=ox+Math.cos(a)*len;
 let ly=oy+Math.sin(a)*len * -1;
