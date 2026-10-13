@@ -15,8 +15,12 @@
 .cart-open{right:0!important}
 .modal-open{display:flex!important}
 .size-active{background:black!important;color:white!important;border-color:black!important}
+#toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:#111;color:white;padding:16px 28px;border-radius:50px;font-size:11px;letter-spacing:0.1em;font-weight:bold;z-index:100;transition:0.5s;opacity:0}
+#toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 </style></head>
 <body class="text-black">
+
+<div id="toast">✓ COMMANDE ENVOYÉE - MERCI 🕷️</div>
 
 <div id="intro" onclick="enterSite()">
 <canvas id="webCanvas"></canvas>
@@ -41,11 +45,18 @@
 </div>
 
 <div id="cartPanel" class="fixed top-0 right-[-400px] w-[360px] h-[100vh] bg-black text-white z-[70] p-8 transition-all duration-500 overflow-y-auto">
-<h2 class="bebas text-[28px]">PANIER</h2>
+<h2 class="bebas text-[28px] tracking-widest">PANIER</h2>
 <div id="cart-items" class="mt-8 space-y-4"></div>
-<p id="cart-total" class="mt-8 font-bold"></p>
-<button onclick="checkout()" class="mt-6 w-full bg-white text-black py-4 rounded-full text-[11px] font-bold">COMMANDER WHATSAPP</button>
+<p id="cart-total" class="mt-8 font-bold tracking-widest"></p>
+<p id="cart-empty" class="mt-4 text-[10px] opacity-40 hidden">Panier vide - zid chi 7aja 🕷️</p>
+<button onclick="checkout()" id="checkoutBtn" class="mt-6 w-full bg-white text-black py-4 rounded-full text-[11px] font-bold tracking-widest">COMMANDER WHATSAPP</button>
 <button onclick="toggleCart()" class="mt-3 w-full border border-white/20 py-3 rounded-full text-[11px]">FERMER</button>
+<div id="orderSuccess" class="hidden mt-8 p-6 bg-white/10 rounded-[16px] text-center">
+<p class="text-[24px]">✅</p>
+<p class="bebas text-[20px] mt-2">MERCI!</p>
+<p class="text-[11px] opacity-60 mt-2">Commande dyalk tsiftat l WhatsApp. Ghadi nconfirmi lik daba.</p>
+<p class="text-[10px] opacity-40 mt-4">ID: <span id="orderId"></span></p>
+</div>
 </div>
 
 <div id="sizeModal" class="fixed inset-0 z-[80] bg-black/90 hidden items-center justify-center p-6" onclick="closeSize()">
@@ -56,8 +67,9 @@
 </div>
 </div>
 
-<section id="accueil" class="relative pt-[64px] min-h-[92vh] flex items-center justify-center text-center px-6 overflow-hidden bg-black">
-<div class="relative z-10"><h1 class="bebas text-[88px] md:text-[180px] leading-[0.8]">SHAAN<br><span class="text-transparent" style="-webkit-text-stroke:1.5px black;">SHAAN</span><br>SHAAN</h1><p class="mt-8 text-[13px] tracking-[0.5em] opacity-40 font-bold">CHEBKA COLLECTION</p><a href="#shop" class="mt-10 inline-block bg-black text-white px-12 py-4 rounded-full text-[11px] font-bold">ENTER SHOP →</a></div>
+<section id="accueil" class="relative pt-[64px] min-h-[92vh] flex items-center justify-center text-center px-6 overflow-hidden bg-[#0a0a0a]">
+<div class="absolute inset-0 opacity-[0.07]" style="background-image: radial-gradient(white 1.5px, transparent 1.5px); background-size: 32px 32px;"></div>
+<div class="relative z-10"><h1 class="bebas text-[88px] md:text-[180px] leading-[0.8] text-white">SHAAN<br><span class="text-transparent" style="-webkit-text-stroke:1.5px white;">SHAAN</span><br>SHAAN</h1><p class="mt-8 text-[13px] tracking-[0.5em] text-white/60 font-bold">CHEBKA COLLECTION</p><a href="#shop" class="mt-10 inline-block bg-white text-black px-12 py-4 rounded-full text-[11px] font-bold tracking-widest">ENTER SHOP →</a></div>
 </section>
 
 <section id="countdown" class="bg-black text-white py-10 px-6 text-center">
@@ -65,84 +77,46 @@
 <div id="timer" class="bebas text-[32px] md:text-[48px] tracking-[0.2em] mt-3">07J 00H 00M 00S</div>
 </section>
 
-<!-- SHOP PRO BHAL SITES KBAR -->
 <section id="shop" class="max-w-7xl mx-auto px-6 py-20 bg-white">
 <div class="flex flex-wrap justify-between items-end gap-4 mb-10">
 <div><h2 class="bebas text-[40px]">SHOP / DROP 01</h2><p class="text-[11px] opacity-50 tracking-widest mt-1">⭐ 4.9/5 (127 reviews) • LIVRAISON 48H • PAIEMENT A LA LIVRAISON</p></div>
 <button onclick="openSize()" class="text-[10px] underline tracking-widest opacity-60">SIZE GUIDE →</button>
 </div>
-
 <div class="grid md:grid-cols-3 gap-8">
-
-<!-- PRODUCT 1 -->
-<div class="bg-[#F6F3EB] rounded-[24px] p-4 group">
-<div class="relative"><img src="photo1.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><span class="absolute top-3 left-3 bg-black text-white text-[9px] px-3 py-1 rounded-full font-bold tracking-widest">NEW</span><span class="absolute top-3 right-3 bg-red-500 text-white text-[9px] px-3 py-1 rounded-full font-bold">LOW STOCK</span></div>
-<div class="mt-4"><div class="flex justify-between items-start"><p class="font-bold text-[13px]">NIGHT SPIDER</p><p class="font-bold text-[13px]">299 MAD</p></div>
-<p class="text-[10px] opacity-50 line-through">399 MAD</p>
-<p class="text-[11px] mt-2 flex items-center gap-1">⭐⭐⭐⭐⭐ <span class="opacity-50">(43)</span> • <span class="text-red-500 font-bold">Ba9i gha 8 pcs</span></p>
-<div class="flex gap-2 mt-3"><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">S</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px] size-active">M</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">L</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">XL</button></div>
-<p class="text-[10px] opacity-60 mt-3">✓ Coton 100% premium • ✓ Oversized fit • ✓ Livraison 48h</p>
-<div class="flex gap-2 mt-4"><button onclick="addToCart('NIGHT SPIDER',299)" class="flex-1 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART</button><a href="https://wa.me/212684745688?text=Bghit NIGHT SPIDER" class="flex-1 border border-black text-center py-3 rounded-full text-[11px] font-bold">BUY NOW</a></div>
+<div class="bg-[#F6F3EB] rounded-[24px] p-4"><div class="relative"><img src="photo1.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><span class="absolute top-3 left-3 bg-black text-white text-[9px] px-3 py-1 rounded-full font-bold">NEW</span><span class="absolute top-3 right-3 bg-red-500 text-white text-[9px] px-3 py-1 rounded-full font-bold">LOW STOCK</span></div><div class="mt-4"><div class="flex justify-between"><p class="font-bold text-[13px]">NIGHT SPIDER</p><p class="font-bold text-[13px]">299 MAD</p></div><p class="text-[11px] mt-2">⭐⭐⭐⭐⭐ <span class="opacity-50">(43)</span> • <span class="text-red-500 font-bold">Ba9i gha 8 pcs</span></p><div class="flex gap-2 mt-3"><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">S</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px] size-active">M</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">L</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">XL</button></div><div class="flex gap-2 mt-4"><button onclick="addToCart('NIGHT SPIDER',299)" class="flex-1 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART</button><a href="https://wa.me/212684745688?text=Bghit NIGHT SPIDER" class="flex-1 border border-black text-center py-3 rounded-full text-[11px] font-bold">BUY NOW</a></div></div></div>
+<div class="bg-[#F6F3EB] rounded-[24px] p-4"><div class="relative"><img src="photo2.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><span class="absolute top-3 left-3 bg-white text-black text-[9px] px-3 py-1 rounded-full font-bold">BEST SELLER</span></div><div class="mt-4"><div class="flex justify-between"><p class="font-bold text-[13px]">BEACH DAY</p><p class="font-bold text-[13px]">249 MAD</p></div><p class="text-[11px] mt-2">⭐⭐⭐⭐⭐ <span class="opacity-50">(61)</span> • <span class="text-green-600 font-bold">In Stock</span></p><div class="flex gap-2 mt-3"><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">S</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px] size-active">M</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">L</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">XL</button></div><div class="flex gap-2 mt-4"><button onclick="addToCart('BEACH DAY',249)" class="flex-1 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART</button><a href="https://wa.me/212684745688?text=Bghit BEACH DAY" class="flex-1 border border-black text-center py-3 rounded-full text-[11px] font-bold">BUY NOW</a></div></div></div>
+<div class="bg-[#F6F3EB] rounded-[24px] p-4"><div class="relative"><img src="photo3.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><span class="absolute top-3 left-3 bg-black text-white text-[9px] px-3 py-1 rounded-full font-bold">LIMITED 50PCS</span></div><div class="mt-4"><div class="flex justify-between"><p class="font-bold text-[13px]">STREET CREW</p><p class="font-bold text-[13px]">499 MAD</p></div><p class="text-[11px] mt-2">⭐⭐⭐⭐⭐ <span class="opacity-50">(23)</span> • <span class="text-red-500 font-bold">Ba9i gha 5 pcs</span></p><div class="flex gap-2 mt-3"><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">S</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">M</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px] size-active">L</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">XL</button></div><div class="flex gap-2 mt-4"><button onclick="addToCart('STREET CREW',499)" class="flex-1 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART</button><a href="https://wa.me/212684745688?text=Bghit STREET CREW" class="flex-1 border border-black text-center py-3 rounded-full text-[11px] font-bold">BUY NOW</a></div></div></div>
 </div>
-</div>
-
-<!-- PRODUCT 2 -->
-<div class="bg-[#F6F3EB] rounded-[24px] p-4">
-<div class="relative"><img src="photo2.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><span class="absolute top-3 left-3 bg-white text-black text-[9px] px-3 py-1 rounded-full font-bold">BEST SELLER</span></div>
-<div class="mt-4"><div class="flex justify-between"><p class="font-bold text-[13px]">BEACH DAY</p><p class="font-bold text-[13px]">249 MAD</p></div>
-<p class="text-[11px] mt-2">⭐⭐⭐⭐⭐ <span class="opacity-50">(61)</span> • <span class="text-green-600 font-bold">In Stock</span></p>
-<div class="flex gap-2 mt-3"><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">S</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px] size-active">M</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">L</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">XL</button></div>
-<p class="text-[10px] opacity-60 mt-3">✓ Summer drop • ✓ Breathable • ✓ 30 jours retour</p>
-<div class="flex gap-2 mt-4"><button onclick="addToCart('BEACH DAY',249)" class="flex-1 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART</button><a href="https://wa.me/212684745688?text=Bghit BEACH DAY" class="flex-1 border border-black text-center py-3 rounded-full text-[11px] font-bold">BUY NOW</a></div>
-</div>
-</div>
-
-<!-- PRODUCT 3 -->
-<div class="bg-[#F6F3EB] rounded-[24px] p-4">
-<div class="relative"><img src="photo3.jpg" class="w-full h-[380px] object-cover rounded-[16px]"><span class="absolute top-3 left-3 bg-black text-white text-[9px] px-3 py-1 rounded-full font-bold">LIMITED 50PCS</span></div>
-<div class="mt-4"><div class="flex justify-between"><p class="font-bold text-[13px]">STREET CREW</p><p class="font-bold text-[13px]">499 MAD</p></div>
-<p class="text-[11px] mt-2">⭐⭐⭐⭐⭐ <span class="opacity-50">(23)</span> • <span class="text-red-500 font-bold">Ba9i gha 5 pcs</span></p>
-<div class="flex gap-2 mt-3"><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">S</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">M</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px] size-active">L</button><button onclick="selectSize(this)" class="size-btn border border-black/20 rounded-full px-3 py-1 text-[10px]">XL</button></div>
-<p class="text-[10px] opacity-60 mt-3">✓ Bundle 2 pieces • ✓ 549 MAD value • ✓ Free delivery</p>
-<div class="flex gap-2 mt-4"><button onclick="addToCart('STREET CREW',499)" class="flex-1 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART</button><a href="https://wa.me/212684745688?text=Bghit STREET CREW" class="flex-1 border border-black text-center py-3 rounded-full text-[11px] font-bold">BUY NOW</a></div>
-</div>
-</div>
-
-</div>
-
-<!-- TRUST BADGES BHAL SITES KBAR -->
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 border-t border-black/10 pt-10 text-center text-[10px] tracking-widest">
-<div><p class="text-[20px]">🚚</p><p class="font-bold mt-2">LIVRAISON 48H</p><p class="opacity-50 mt-1">Partout au Maroc</p></div>
-<div><p class="text-[20px]">💵</p><p class="font-bold mt-2">PAIEMENT A LA LIVRAISON</p><p class="opacity-50 mt-1">Cash on delivery</p></div>
-<div><p class="text-[20px]">↩️</p><p class="font-bold mt-2">RETOUR 14 JOURS</p><p class="opacity-50 mt-1">Sans questions</p></div>
-<div><p class="text-[20px]">🔒</p><p class="font-bold mt-2">100% SECURE</p><p class="opacity-50 mt-1">Paiement sécurisé</p></div>
+<div><p class="text-[20px]">🚚</p><p class="font-bold mt-2">LIVRAISON 48H</p></div>
+<div><p class="text-[20px]">💵</p><p class="font-bold mt-2">Paiement à la livraison</p></div>
+<div><p class="text-[20px]">↩️</p><p class="font-bold mt-2">RETOUR 14J</p></div>
+<div><p class="text-[20px]">🔒</p><p class="font-bold mt-2">100% SECURE</p></div>
 </div>
-
 </section>
 
-<!-- CONTACT AVEC INSTA + GMAIL -->
 <footer id="contact" class="bg-black text-white py-16 px-6">
-<div class="max-w-7xl mx-auto">
-<div class="flex flex-col md:flex-row justify-between gap-10">
-<div><p class="bebas text-[44px] tracking-widest">SHAAN</p><p class="text-[10px] tracking-[0.4em] opacity-40 mt-2">DROP 01 - CHEBKA 🕷️</p><p class="text-[11px] opacity-60 mt-6 max-w-[300px]">Streetwear brand men Fes. Limited drops, premium quality, 3la 7a9.</p></div>
-<div><p class="font-bold text-[12px] tracking-widest">CONTACT</p><a href="mailto:abdalwahabebakkali@gmail.com" class="block mt-4 text-[13px] opacity-80 hover:opacity-100">📧 abdalwahabebakkali@gmail.com</a><a href="https://wa.me/212684745688" class="block mt-3 text-[13px] opacity-80">📱 0684745688</a><a href="https://instagram.com/haytambnjjjjjjj" target="_blank" class="block mt-3 text-[13px] opacity-80">📸 @haytambnjjjjjjj</a></div>
-<div><p class="font-bold text-[12px] tracking-widest">FOLLOW</p><a href="https://instagram.com/haytambnjjjjjjj" target="_blank" class="mt-4 inline-flex items-center gap-2 bg-white text-black px-8 py-3 rounded-full text-[11px] font-bold tracking-widest">INSTAGRAM →</a><p class="text-[10px] opacity-30 mt-4">127 clients satisfaits ⭐ 4.9/5</p></div>
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10">
+<div><p class="bebas text-[44px]">SHAAN</p><p class="text-[10px] opacity-40 mt-2">DROP 01 - CHEBKA 🕷️</p></div>
+<div><p class="font-bold text-[12px]">CONTACT</p><a href="mailto:abdalwahabebakkali@gmail.com" class="block mt-4 text-[13px] opacity-80">📧 abdalwahabebakkali@gmail.com</a><a href="https://wa.me/212684745688" class="block mt-3 text-[13px] opacity-80">📱 0684745688</a><a href="https://instagram.com/haytambnjjjjjjj" target="_blank" class="block mt-3 text-[13px] opacity-80">📸 @haytambnjjjjjjj</a></div>
+<div><a href="https://instagram.com/haytambnjjjjjjj" target="_blank" class="inline-flex bg-white text-black px-8 py-3 rounded-full text-[11px] font-bold">INSTAGRAM →</a></div>
 </div>
-<div class="border-t border-white/10 mt-12 pt-8 text-center text-[10px] opacity-30 tracking-widest">© 2026 SHAAN - ALL RIGHTS RESERVED - MADE IN FES</div>
-</div>
+<div class="border-t border-white/10 mt-12 pt-8 text-center text-[10px] opacity-30">© 2026 SHAAN - MADE IN FES</div>
 </footer>
 
 <script>
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('menu-open')}
-function toggleCart(){document.getElementById('cartPanel').classList.toggle('cart-open')}
+function toggleCart(){document.getElementById('cartPanel').classList.toggle('cart-open'); if(document.getElementById('cartPanel').classList.contains('cart-open')){document.getElementById('orderSuccess').classList.add('hidden');document.getElementById('checkoutBtn').classList.remove('hidden');}}
 function openSize(){document.getElementById('sizeModal').classList.add('modal-open');document.getElementById('sizeModal').classList.remove('hidden')}
 function closeSize(){document.getElementById('sizeModal').classList.remove('modal-open');document.getElementById('sizeModal').classList.add('hidden')}
 function enterSite(){document.getElementById('webCanvas').classList.add('rising');document.getElementById('content').classList.add('rising');setTimeout(()=>{document.getElementById('intro').classList.add('hide')},400);}
 function selectSize(btn){let parent=btn.parentElement;parent.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('size-active'));btn.classList.add('size-active')}
-let cart=[];function addToCart(name,price){let size=document.querySelector('.size-active')?.innerText||'M';cart.push({name:name+' ('+size+')',price});updateCart();document.getElementById('cartPanel').classList.add('cart-open')}
-function updateCart(){document.getElementById('cart-count').innerText=cart.length;let html='';let total=0;cart.forEach((it,i)=>{total+=it.price;html+=`<div class="flex justify-between text-[12px] border-b border-white/10 pb-3"><span>${it.name}</span><span>${it.price} MAD <span onclick="removeItem(${i})" class="ml-3 text-red-400 cursor-pointer">✕</span></span></div>`});document.getElementById('cart-items').innerHTML=html||'<p class="opacity-30 text-[11px]">Panier vide</p>';document.getElementById('cart-total').innerText=total?'TOTAL: '+total+' MAD':''}
+let cart=[];function addToCart(name,price){let size=document.querySelector('.size-active')?.innerText||'M';let fullName=name+' ('+size+')';let existing=cart.find(c=>c.name===fullName);if(existing){existing.qty=(existing.qty||1)+1}else{cart.push({name:fullName,price,qty:1})}updateCart();document.getElementById('cartPanel').classList.add('cart-open');showToast(name+' ajouté ✓')}
+function updateCart(){document.getElementById('cart-count').innerText=cart.reduce((a,b)=>a+(b.qty||1),0);let html='';let total=0;cart.forEach((it,i)=>{let qty=it.qty||1;total+=it.price*qty;html+=`<div class="flex justify-between items-center text-[12px] border-b border-white/10 pb-3"><div><p>${it.name}</p><p class="text-[10px] opacity-50">Qté: ${qty}</p></div><span>${it.price*qty} MAD <span onclick="removeItem(${i})" class="ml-3 text-red-400 cursor-pointer">✕</span></span></div>`});let empty=cart.length===0;document.getElementById('cart-items').innerHTML=empty?'':html;document.getElementById('cart-total').innerText=empty?'':`TOTAL: ${total} MAD`;document.getElementById('cart-empty').classList.toggle('hidden',!empty);document.getElementById('checkoutBtn').classList.toggle('hidden',empty);if(empty){document.getElementById('cart-total').innerText=''}}
+
 function removeItem(i){cart.splice(i,1);updateCart()}
-function checkout(){if(!cart.length)return alert('Panier vide');let msg='Salam SHAAN! Bghit:%0A'+cart.map(i=>'- '+i.name+' '+i.price+'MAD').join('%0A')+'%0ATOTAL: '+cart.reduce((a,b)=>a+b.price,0)+' MAD';window.open('https://wa.me/212684745688?text='+msg,'_blank')}
+function checkout(){if(!cart.length)return;let total=cart.reduce((a,b)=>a+b.price*(b.qty||1),0);let orderId='SHAAN-'+Math.floor(Math.random()*9000+1000);let msg='Salam SHAAN! Bghit ncommander:%0A'+cart.map(i=>`- ${i.name} x${i.qty||1} (${i.price*(i.qty||1)} MAD)`).join('%0A')+`%0ATOTAL: ${total} MAD%0AOrder ID: ${orderId}`;window.open('https://wa.me/212684745688?text='+msg,'_blank');document.getElementById('orderId').innerText=orderId;document.getElementById('orderSuccess').classList.remove('hidden');document.getElementById('cart-items').innerHTML='';document.getElementById('cart-total').innerText='';document.getElementById('checkoutBtn').classList.add('hidden');document.getElementById('cart-empty').classList.add('hidden');showToast('Commande envoyée! ✓');setTimeout(()=>{cart=[];updateCart();},2000)}
+function showToast(msg){let t=document.getElementById('toast');t.innerText=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
 let dropDate=new Date();dropDate.setDate(dropDate.getDate()+7);dropDate.setHours(18,0,0);function updateTimer(){let diff=dropDate-new Date();if(diff<0)diff=0;let d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);document.getElementById('timer').innerText=`${String(d).padStart(2,'0')}J ${String(h).padStart(2,'0')}H ${String(m).padStart(2,'0')}M ${String(s).padStart(2,'0')}S`}setInterval(updateTimer,1000);updateTimer();
 const c=document.getElementById('webCanvas'), x=c.getContext('2d');function resize(){c.width=innerWidth;c.height=innerHeight}resize();window.onresize=resize;let t=0;function draw(){x.clearRect(0,0,c.width,c.height);const w=c.width,h=c.height;const ox=0,oy=h;x.shadowBlur=12;x.shadowColor='rgba(255,255,255,0.3)';for(let r=40;r<w*1.8;r+=68){let alpha=0.32-r*0.00012;if(alpha<0.05)alpha=0.05;x.strokeStyle=`rgba(255,255,255,${alpha})`;x.lineWidth=1;x.beginPath();for(let a=-0.15;a<1.45;a+=0.015){let wobble=Math.sin(a*5+t*0.4)*5+Math.cos(r*0.01+t)*3;let px=ox+Math.cos(a)*(r+wobble);let py=oy+Math.sin(a)*(r+wobble);if(a==-0.15)x.moveTo(px,py);else x.lineTo(px,py)}x.stroke()}x.shadowBlur=0;for(let a=0;a<1.45;a+=0.14){x.strokeStyle='rgba(255,255,255,0.18)';x.lineWidth=0.9;x.beginPath();x.moveTo(ox,oy);let len=w*2;let lx=ox+Math.cos(a)*len;let ly=oy+Math.sin(a)*len*-1;x.lineTo(lx,ly);x.stroke()}t+=0.025;requestAnimationFrame(draw)}draw();
 </script>
